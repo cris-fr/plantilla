@@ -38,3 +38,16 @@ exports.delete = async (req, res) => {
     }
 }
 
+
+exports.update = async (req, res) => {
+    try {
+        let data = await product.updateAndInsertCollection(req.params.id, req.body);
+        res.status(214).json({status: 214, data});
+    } catch (error) {
+        let err = JSON.parse(error.message);
+        if(err.status == 500) return res.status(err.status).json(err);
+
+        return error;
+    }
+}
+

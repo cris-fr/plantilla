@@ -31,7 +31,7 @@ module.exports = class Product {
         try{
             const con = await connectMongodb();
             const collection = con.collection('product'); 
-            return await collection.updateOne({_id: ObjectId(id)}, {$set: data});
+            return await collection.updateOne({_id: new ObjectId(id)}, {$set: data});
         }catch(err){
             throw new Error(JSON.stringify({status: 500, message: "Product not updated", err}));
         }
