@@ -4,7 +4,7 @@ const product = express();
 
 product.post("/", express.json(), controlerProduct.save);
 product.get("/", controlerProduct.search)
-//product.delete("/:id", controlerProduct.delete)
 //product.update("/:id", express.json(), controlerProduct.update);
+product.delete("/:id", controlerProduct.delete)
 
 module.exports = product;

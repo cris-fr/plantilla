@@ -12,7 +12,7 @@ module.exports = class Product {
             if(!res.length) throw new ValidationError(JSON.stringify({status: 404, message: "Product not fetched", err}))
             return await collection.find().toArray();
         }catch(err){
-            throw new ValidationError(JSON.stringify({status: 500, message: "Product not fetched", err}));
+            throw new Error(JSON.stringify({status: 500, message: "Product not fetched", err}));
         }
     }
 
@@ -33,7 +33,7 @@ module.exports = class Product {
             const collection = con.collection('product'); 
             return await collection.updateOne({_id: ObjectId(id)}, {$set: data});
         }catch(err){
-            throw new ValidationError(JSON.stringify({status: 500, message: "Product not updated", err}));
+            throw new Error(JSON.stringify({status: 500, message: "Product not updated", err}));
         }
     }
 
@@ -41,9 +41,9 @@ module.exports = class Product {
         try{
             const con = await connectMongodb();
             const collection = con.collection('product'); 
-            return await collection.deleteOne({_id: ObjectId(id)});
+            return await collection.deleteOne({_id: new ObjectId(id)});
         }catch(err){
-            throw new ValidationError(JSON.stringify({status: 500, message: "Product not deleted", err}));
+            throw new Error(JSON.stringify({status: 500, message: "Product not deleted", err}));
         }
     }
 

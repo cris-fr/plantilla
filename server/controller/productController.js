@@ -26,3 +26,15 @@ exports.search = async (req, res) => {
     }
 }
 
+exports.delete = async (req, res) => {
+    try {
+        let data = await product.deleteByIdCollection(req.params.id);
+        res.status(204).json({status: 204, data});
+    } catch (error) {
+        let err = JSON.parse(error.message);
+        if(err.status == 500) return res.status(err.status).json(err);
+
+        return error;
+    }
+}
+
