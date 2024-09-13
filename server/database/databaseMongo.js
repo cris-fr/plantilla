@@ -14,7 +14,7 @@ async function connectMongodb() {
     try {
         await client.connect();
         dbInstance = client.db(process.env.MONGO_DB_NAME);
-        return dbInstance.collection("user");
+        return dbInstance;
     } catch (error) {
         console.error('Failed to connect to MongoDB', error);
         throw error;
