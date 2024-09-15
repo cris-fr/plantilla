@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    padding-bottom: 6vh;
+    gap: 7vh;
+}
+
+body > img {
+    width: 15vw;
+    max-width: 100px;
+    position: absolute;
+    right: 5vw;
+    top: 5vh;
+}
+
+.texts_section {
+    width: 80%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.texts_section > h3 {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.7rem;
+    margin-bottom: 2vh;
+}
+
+.texts_section p {
+    font-family: "Inter", sans-serif;
+    font-size: 0.9rem;
+    color: rgb(85, 85, 85);
+    text-align: center;
+}
+
+.buttons_section {
+    width: 80%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.buttons_section button {
+    font-family: "Inter", sans-serif;
+    background: black;
+    color: white;
+    border: solid 1px black;
+    border-radius: 10px;
+    height: 45px;
+}
+
+.inputs_section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 80%;
+    max-width: 700px;
+}
+
+.inputs_section input {
+    padding: 12px;
+    width: 100%;
+    border-radius: 10px;
+    border: solid 1px gray;
+}
+
+.password-container {
+    position: relative;
+  }
+
+.password-container > p{
+    font-family: "Inter", sans-serif;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+  }
+
+#forgotPassword {
+    position: absolute;
+    margin-top: 1.1vh;
+    right: 10px;
+    transition-duration: 0.5s;
+}
+
+#forgotPassword:hover {
+    color: rgb(0, 29, 160);
+}
+
+.toggle-icon {
+    position: absolute;
+    right: 10px;
+    top: 67%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+  }
+
+
+
+.LogInMethods_section {
+    /* background: green; */
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 700px;
+    gap: 15px;
+}
+
+.division {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    color: rgb(88, 88, 88);
+    font-size: 0.8rem;
+}
+
+.division > hr {
+    width: 30%;
+    height: 1px;
+    border: none;
+    background-color: gray;
+}
+
+.buttons_div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons_div > button {
+    width: 30%;
+    height: 45px;
+    border: solid 1px lightgray;
+    border-radius: 10px;
+}
+
+
+.buttons_div > button > img {
+    width: 20px;
+}
+
+
+
+
+#termsAndConditions {
+    transition-duration: 0.5s;
+}
+
+#termsAndConditions:hover {
+    color: rgb(0, 29, 160);
+}
+
+#footer {
+    align-items: center;
+}
