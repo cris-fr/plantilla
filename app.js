@@ -10,6 +10,10 @@ app.use('/css', express.static(join(__dirname, process.env.EXPRESS_STATIC, 'css'
 app.use('/js', express.static(join(__dirname, process.env.EXPRESS_STATIC, 'js')))
 app.use('/storage', express.static(join(__dirname, process.env.EXPRESS_STATIC, 'storage')))
 
+
+
+
+
 app.use("/", (req, res, next)=>{
     req.__dirname = __dirname;
     next()
@@ -29,6 +33,11 @@ app.use("/product", (req, res, next)=>{
     req.__dirname = __dirname;
     next()
 }, productRouter);
+
+
+
+
+
 
 app.use((req, res)=>{
     res.status(404).json({message: "The endpoint is not available"});
