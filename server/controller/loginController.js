@@ -1,7 +1,23 @@
-const bcrypt = require('bcrypt');  
+const bcrypt = require('bcrypt');
+const User = require('../model/signupModel'); 
+const user = new User();
 
 exports.login = async (req, res) => {
-    res.cookie('prueba', {name: 'asdasd'}, {maxAge: 1000000}).status(201).json({message: 'Cookie creada'});
+    try {
+        console.log(req.body);
+        let {email, password} = req.body;
+        let resExistsEmail = await user.findExistEmail(email);
+        if(resExistsEmail.status==404) return res.status(resExistsEmail.status).json(resExistsEmail);
+        let resFindUser = await user.findOneUserByEmail(email);
+        if(resFindUser.status==404) return res.status(resFindUser.status).json(resFindUser);
+        let resEmailAndPassword = await bcrypt.compare(password, resFindUser.data.password);
+        if(!resEmailAndPassword) return res.status(406).json({status: 406, message: "Invalid password"});
+        delete resFindUser.data.password; 
+        res.cookie('Token', JSON.stringify(resFindUser), {maxAge: 1800000}).status(200).json({status: 200, message: "Logged succesfully", data: resFindUser});
+    } catch (error) {
+        let err = JSON.parse(error.message);
+        if(err.status == 500) return res.status(err.status).json(err);
+    }
 }
 
 exports.findcookie = async (req, res) => {
@@ -9,4 +25,3 @@ exports.findcookie = async (req, res) => {
 
     res.json({message: 'ok'});
 };
-

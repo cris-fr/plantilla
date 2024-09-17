@@ -4,6 +4,6 @@ const logIn = express();
 const cookieParser = require('cookie-parser');
 
 logIn.post("/", cookieParser(), express.json(), controlerLogin.login);
-logIn.get("/", cookieParser(), controlerLogin.findcookie);
+//logIn.get("/", cookieParser(), controlerLogin.findcookie);
 
 module.exports = logIn;

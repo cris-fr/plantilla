@@ -71,6 +71,12 @@ body > img {
     max-width: 700px;
 }
 
+#logInForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 .inputs_section input {
     padding: 12px;
     width: 100%;

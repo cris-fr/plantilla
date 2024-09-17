@@ -14,21 +14,24 @@
         <div class="texts_section">
             <h3>Log in</h3>
         </div>
-        <div class="password-container">
-            <p>Email address</p>
-            <input type="email" id="email" name="https://www.svgrepo.com/show/358477/check-circle.svg" placeholder="">
-            <img src="https://www.svgrepo.com/show/91549/question-mark-inside-a-circle.svg" id="emailVerificator" class="toggle-icon">
-        </div>
-        <div class="password-container">
-            <p>Password</p>
-            <input type="password" id="password" name="password" placeholder="">
-            <img src="https://www.svgrepo.com/show/532465/eye-slash.svg" id="togglePassword" class="toggle-icon">
-            <p id="forgotPassword">Forgot password?</p>
-        </div>
+        
+        <form id="logInForm" method="post">
+            <div class="password-container">
+                <p>Email address</p>
+                <input type="email" id="email" name="email" placeholder="">
+                <img src="https://www.svgrepo.com/show/91549/question-mark-inside-a-circle.svg" id="emailVerificator" class="toggle-icon">
+            </div>
+            <div class="password-container">
+                <p>Password</p>
+                <input type="password" id="password" name="password" placeholder="">
+                <img src="https://www.svgrepo.com/show/532465/eye-slash.svg" id="togglePassword" class="toggle-icon">
+                <p id="forgotPassword">Forgot password?</p>
+            </div>
+        </form>
         
     </section>
     <section class="buttons_section">
-        <button>Log in</button>
+        <button form="logInForm">Log in</button>
     </section>
     <section class="LogInMethods_section">
          <div class="division">

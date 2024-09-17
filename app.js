@@ -1,5 +1,4 @@
 const express = require('express');
-const cookieParser = require('cookie-parser');
 const openningRouter = require('./server/router/openningRouter');
 const loginRouter = require('./server/router/loginRouter');
 const signupRouter = require('./server/router/signupRouter');
