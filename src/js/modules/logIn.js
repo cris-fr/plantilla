@@ -24,5 +24,7 @@ addEventListener("submit", async(e) => {
   }
   let peticion = await fetch(uri, config);
   let res = await peticion.json();
-  console.log(res);
+  console.log(res)
+
+  if(res.status == 200) location.href = "/product";
 })

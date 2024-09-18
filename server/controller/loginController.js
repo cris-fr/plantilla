@@ -12,8 +12,9 @@ exports.login = async (req, res) => {
         if(resFindUser.status==404) return res.status(resFindUser.status).json(resFindUser);
         let resEmailAndPassword = await bcrypt.compare(password, resFindUser.data.password);
         if(!resEmailAndPassword) return res.status(406).json({status: 406, message: "Invalid password"});
+        user.destroyer(resFindUser.data.nick, resFindUser.data.password);
         delete resFindUser.data.password; 
-        res.cookie('Token', JSON.stringify(resFindUser), {maxAge: 1800000}).status(200).json({status: 200, message: "Logged succesfully", data: resFindUser});
+        res.cookie('token', JSON.stringify(resFindUser), {maxAge: 1800000}).status(200).json({status: 200, message: "Logged succesfully", data: resFindUser});
     } catch (error) {
         let err = JSON.parse(error.message);
         if(err.status == 500) return res.status(err.status).json(err);
