@@ -1,18 +1,13 @@
 const { MongoClient } = require('mongodb');
 module.exports = class connectMongodb {
-    static instanceConnect;
     db;
     con;
     user;
     #password;
 
     constructor({ user, pwd } = {user: process.env.MONGO_USER, pwd: process.env.MONGO_PSW}) {
-        if(connectMongodb.instanceConnect) {
-            return connectMongodb.instanceConnect;
-        }
         this.user = user;
-        this.setPassword = pwd;
-        connectMongodb.instanceConnect = this;
+        this.#password = pwd;
     }
 
     destroyer(user, pwd) {
@@ -22,8 +17,10 @@ module.exports = class connectMongodb {
 
     async connectOpen() {
         try {
-            this.con = new MongoClient(`${process.env.MONGO_PROTOCOL}${this.getUser()}:${this.getPassword()}@${process.env.MONGO_HOST_NAME}:${process.env.MONGO_PORT}`, { useNewUrlParser: true, useUnifiedTopology: true });
+            const url = `${process.env.MONGO_PROTOCOL}${this.getUser}:${this.getPassword}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}`;
+            this.con = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
             await this.con.connect();
+            console.log(`Conectado a: ${url}`);
             this.db = this.con.db(process.env.MONGO_DB_NAME);
         } catch (error) {
             this.con = undefined;

@@ -13,19 +13,17 @@ db.createRole(
         ]
     });
 
-db.createRole(
-    {
+    db.createRole({
         role: "user standard",
         privileges: [
             {
                 resource: { db: "ejemploCRUD", collection: "user" },
-                actions: [ "find", "insert", "update" ]
+                actions: ["find", "insert", "update"]
             },
             {
                 resource: { db: "ejemploCRUD", collection: "product" },
-                actions: [ "find", "update" ]
+                actions: ["find", "update"]
             }
-            
-        ]
-    }
-);
+        ],
+        roles: []
+    });

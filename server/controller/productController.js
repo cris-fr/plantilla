@@ -4,7 +4,11 @@ const product = new Product();
 
 exports.save = async (req, res) => {
     try {
-        let data = await product.insertCollection(req.body);
+        let resUpload = await product.uploadFileByProduct(req.files, req.__dirname);
+        if(!resUpload.status == 201) return resUpload.status(406).json({message: "The file could not be uploaded"});
+        req.body.image = resUpload.data;
+        let resProduct = await product.insertCollection(req.body);
+        if(resProduct.status == 201) return res.status().
         res.status(201).json({status: 201, data});
     } catch (error) {
         let err = JSON.parse(error.message);
