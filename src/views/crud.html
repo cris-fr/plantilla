@@ -13,16 +13,12 @@
         <span class="message">MVC by express</span>
         <div class="container">
             <div class="admin-product-form-container">
-                 <form id="myForm" action="/user/v1" method="POST"> <!-- enctype="multipart/form-data" -->
-                    <h3>add a new info</h3>
-                    <input type="number" placeholder="Enter the user code" name="codigo" class="box">
-                    <input type="text" placeholder="Enter the username" name="nombre" class="box">
-                    <input type="text" placeholder="Enter the user's last name" name="apellido" class="box">
-                    <input type="text" placeholder="Enter the user's nickname" name="nick" class="box">
-                    <input type="email" placeholder="Enter the user's email" name="corro_electronico" class="box">
-                    <input type="number" placeholder="Enter the user's phone number" name="telefono" class="box">
-                    <input type="rol" placeholder="Enter the user role" name="rol" class="box">
-                    <!-- <input type="file" accept="image/png, image/jpeg, image/jpg" name="product_image" class="box"> -->
+                 <form id="myForm" method="POST" enctype="multipart/form-data"> 
+                    <h3>add a new product</h3>
+                    <input type="text" placeholder="Enter the name" name="name" class="box">
+                    <input type="text" placeholder="Enter the brand" name="brand" class="box">
+                    <input type="text" placeholder="Enter the description" name="description" class="box">
+                    <input type="file" accept="image/png, image/jpeg, image/jpg" name="product_image" class="box">
                     <input type="submit" class="btn" name="add" value="add">
                 </form>
             </div>
@@ -30,31 +26,24 @@
                 <table class="product-display-table">
                     <thead>
                         <tr>
-                            <td>Codigo</td>
                             <td>Name</td>
-                            <td>Last name</td>
-                            <td>Nick</td>
-                            <td>Email</td>
-                            <td>Phone</td>
-                            <td>Rol</td>
+                            <td>Brand</td>
+                            <td>Description</td>
+                            <td>Image</td>
                             <td>Accion</td>
                         </tr>
                     </thead>
                     <tbody id="myTbody">
-                        <!-- <tr>
+                        <tr>
                             <td><img src="//" height="100" alt=""></td>
                             <td contenteditable></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
                             <td></td>
                             <td></td>
                             <td>
                                 <a href="#" class="btn"> edit </a>
                                 <a href="#" class="btn"> delete </a>
                             </td>
-                        </tr> -->
+                        </tr>
                     </tbody>
                 </table>
             </div>

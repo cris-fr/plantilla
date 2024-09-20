@@ -1,8 +1,11 @@
 const router = require('express').Router();
-const layout = require('../view/productView');
-const productV1 = require('../version/productV1');
+const cookieParser = require('cookie-parser');
+const { verify } = require('../middleware/verify');
 
-router.use("/v1", productV1);
+const productV1 = require('../version/productV1');
+const layout = require('../view/productView');
+
+router.use("/v1", cookieParser(), verify, productV1);
 router.use(layout);
 
 module.exports = router;

@@ -6,6 +6,9 @@ const path = require('path');
 
 
 module.exports = class Product extends connectMongodb {
+    constructor(data){
+        super(data);
+    }
     async findCollection(){
         try{
             await this.connectOpen();
