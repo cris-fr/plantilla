@@ -22,7 +22,7 @@ db.createRole(
             },
             {
                 resource: { db: "ejemploCRUD", collection: "product" },
-                actions: ["find", "update"]
+                actions: ["find", "insert", "update"]
             }
         ],
         roles: []

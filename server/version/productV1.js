@@ -5,8 +5,8 @@ const file = require('../middleware/file')
 const product = express();
 
 
-product.post("/", file, controlerProduct.save);
 product.get("/", controlerProduct.search)
+product.post("/", file, controlerProduct.save);
 product.put("/:id", express.json(), controlerProduct.update);
 product.delete("/:id", controlerProduct.delete)
 

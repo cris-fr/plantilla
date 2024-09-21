@@ -6,13 +6,12 @@ exports.save = async (req, res) => {
         let resUpload = await product.uploadFileByProduct(req.files, req.__dirname);
         if(!resUpload.status == 201) return resUpload.status(406).json({message: "The file could not be uploaded"});
         req.body.image = resUpload.data;
-
+        
         let {data:imagen}=resUpload;
         let {name, brand, description} = req.body;
-
+        
         let resProduct = await product.insertCollection({name, brand, description, imagen});
         if(resProduct.status == 201) return res.status(resProduct.status).json(resProduct);
-        res.status(201).json({status: 201, data});
     } catch (error) {
         let err = JSON.parse(error.message);
         if(err.status == 500) return res.status(err.status).json(err);

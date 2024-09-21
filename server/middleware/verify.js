@@ -1,6 +1,6 @@
 exports.verify = async(req, res, next) => {
     try {
-        let {nick, pwd, rol} = JSON.parse(req.cookie.token).data;
+        let {nick, password: pwd, rol} = JSON.parse(req.cookies.token).data;
         req.data = {
             nick,
             pwd,

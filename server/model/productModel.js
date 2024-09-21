@@ -2,6 +2,7 @@ const connectMongodb = require('../database/databaseMongo');
 const { ObjectId } = require('mongodb');
 const fs = require('fs');
 const path = require('path');
+const { Console } = require('console');
 
 
 
@@ -37,10 +38,11 @@ module.exports = class Product extends connectMongodb {
             let file = files.product_image;
             let fileBuffer = file.data;
             const filePath = path.join(__dirname, process.env.EXPRESS_STATIC, '/storage/img', file.name);
+            console.log(filePath)
             fs.writeFile(filePath, fileBuffer, (err) => {
                 if(err) throw new Error(JSON.stringify({status: 415, message: "Error uploading file as image format", err}));
-                return {status: 201, message: "File uploaded successfully", data: filePath};
             })
+            return {status: 201, message: "File uploaded successfully", data: filePath};
         } catch (error){
             throw new Error(JSON.stringify({status: 500, message: "Error uploading the file, the server denied uploading the file.", error}));
         }
