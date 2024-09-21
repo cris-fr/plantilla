@@ -2,16 +2,17 @@ let uri = `${location.href}/v1`;
 let myForm = document.querySelector("#myForm");
 let myTbody = document.querySelector("#myTbody");
 
-const showData = (data) => {
+const showData = async(data) => {
+    console.log(data);
     let plantilla = "";
     data.forEach(val => {
         plantilla += /*html*/`
-        <tr>
+        <tr id="${val._id}">
             <td contenteditable>${val.name}</td>
             <td>${val.name}</td>
             <td>${val.brand}</td>
             <td>${val.description}</td>
-            <td><img src="${val.img}" height = '100'></td>
+            <td><img src="${val.imagen}" height="100"></td>
             <td>
                 <a href="#" class="btn"> edit </a>
                 <a href="#" class="btn"> delete </a>
@@ -22,13 +23,13 @@ const showData = (data) => {
     return plantilla;
 }
 
+
 addEventListener('DOMContentLoaded', async()=>{
     let peticion = await fetch(uri);
     let res = await peticion.json();
-    console.log(res);
-    console.log(showData(res.data));
-    //if(res.status == 200) myTbody.innerHTML = await showData(res.data);
+    if(res.status == 200) myTbody.innerHTML = await showData(res.data);
 })
+
 
 myForm.addEventListener("submit", async(e)=>{
     e.preventDefault();
@@ -37,10 +38,14 @@ myForm.addEventListener("submit", async(e)=>{
       method: e.target.method,
       body: data
     }
+    console.log(uri)
     let peticion = await fetch(uri, config);
     let res = await peticion.json();
-    console.log(res)
-    console.log(res.status);
+
+    let peticion1 = await fetch(uri);
+    let res1 = await peticion1.json();
+    if(res1.status == 200) myTbody.innerHTML = await showData(res1.data);
+
     if(res.status == 401) location.href = "/login";
   })
 

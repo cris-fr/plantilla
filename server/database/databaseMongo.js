@@ -16,10 +16,8 @@ module.exports = class connectMongodb {
     async connectOpen() {
         try {
             const url = `${process.env.MONGO_PROTOCOL}${this.getUser}:${this.getPassword}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}${(this.getRol != "admin users") ? `/${process.env.MONGO_DB_NAME}` : ''}`
-            console.log(url)
-            this.con = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
+            this.con = new MongoClient(url);
             await this.con.connect();
-            console.log(`Conectado a: ${url}`);
             this.db = this.con.db(process.env.MONGO_DB_NAME);
         } catch (error) {
             this.con = undefined;
