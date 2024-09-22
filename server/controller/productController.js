@@ -5,9 +5,9 @@ exports.save = async (req, res) => {
         const product = new Product(req.data);
         let resUpload = await product.uploadFileByProduct(req.files, req.__dirname);
         if(!resUpload.status == 201) return resUpload.status(406).json({message: "The file could not be uploaded"});
-        req.body.image = resUpload.data;
-        
-        let {data:imagen}=resUpload;
+        //req.body.image = resUpload.data;
+        let {name: imagen} = req.files.product_image;
+        let {data: imagenPath}=resUpload;
         let {name, brand, description} = req.body;
         
         let resProduct = await product.insertCollection({name, brand, description, imagen});

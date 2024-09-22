@@ -11,7 +11,7 @@ const showData = async(data) => {
             <td contenteditable id="productName">${val.name}</td>
             <td contenteditable id="productBrand">${val.brand}</td>
             <td contenteditable id="productDesc">${val.description}</td>
-            <td><img src="${val.image}" height="100"></td>
+            <td><img src="../storage/img/${val.imagen}" height="100"></td>
             <td>
                 <button id="btnEdit" class="btn"> edit </button>
                 <button id="btnDelete" class="btn"> delete </button>
