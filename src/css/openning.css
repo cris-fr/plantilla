@@ -51,7 +51,8 @@ body > img {
     gap: 10px;
 }
 
-.buttons_section button {
+.buttons_section a button {
+    width: 100%;
     font-family: "Inter", sans-serif;
     border: solid 1px black;
     border-radius: 10px;
